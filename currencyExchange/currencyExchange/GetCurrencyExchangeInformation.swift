@@ -9,6 +9,7 @@ import Foundation
 struct GetCurrencyExchangeInformation {
    static let shared = GetCurrencyExchangeInformation()
     func currencyInformation(url:String,completion:@escaping([DataModel]?,Error?)->()){
+       
         NetWorkServiceCall.shared.networkCall(url: url){result in
             switch result{
             case .success(let data):

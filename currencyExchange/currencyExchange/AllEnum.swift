@@ -8,5 +8,5 @@
 import Foundation
 import UIKit
 enum urlOfCurrencyExchange:String{
-    case url = "api.nomics.com/v1/exchange-rates?key=5ef30835a93ce9d5a4e98abe2df472ef24d428cf"
+    case url = "https://api.nomics.com/v1/exchange-rates?key=79b084b15be33b94c3f20f79c84b9db3f88453c7&ids"
 }

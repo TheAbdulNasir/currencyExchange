@@ -12,14 +12,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var showCurrency: UILabel!
     @IBOutlet weak var showRate: UILabel!
     @IBOutlet weak var showTimestemp: UILabel!
-    
+    @IBOutlet weak var showCurrencyRate: UILabel!
+    @IBOutlet weak var currencyNameTextField: UITextField!
+    var holder:[DataModel] = []
+   
     override func viewDidLoad() {
         super.viewDidLoad()
        currencyUpdateCall()
-            
-        }
+       
+       
+    }
     func currencyUpdateCall(){
-        GetCurrencyExchangeInformation.shared.currencyInformation(url:"https://api.nomics.com/v1/exchange-rates?key=5ef30835a93ce9d5a4e98abe2df472ef24d428cf") { data,error in
+        GetCurrencyExchangeInformation.shared.currencyInformation(url:urlOfCurrencyExchange.url.rawValue) { data,error in
             guard let data = data else {return}
             for x in data {
                 if x.currency == x.currency && x.rate == x.rate && x.timestamp == x.timestamp {
@@ -30,6 +34,20 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+   
+    @IBAction func convertCurrencyButton(_ sender: UIButton) {
+      // let currency = holder
+        for x in holder {
+           print(x)
+            if currencyNameTextField.text == x.currency{
+               print(x.currency)
+                showCurrencyRate.text = x.rate
+            }
+        }
+    
+    }
 }
+    
 
 
